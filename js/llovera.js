@@ -1,42 +1,52 @@
-'use strict';
-function ubicacion() {   
-    let longitud
-    let latitud
+"use strict";
 
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition( posicion => {
-            longitud = posicion.coords.longitude
-            latitud = posicion.coords.latitude
+function obtenerLatitudLongitud() {
+  let longitud;
+  let latitud;
 
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&hourly=rain`
-            console.log(url);
-        })
-    }
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((posicion) => {
+      longitud = posicion.coords.longitude;
+      latitud = posicion.coords.latitude;
+      obtenerTiempo(latitud, longitud);
+      obtenerNombrePoblacion(latitud, longitud);
+    });
+  }
 }
 
-function obtenerNombrePoblacion() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            const latitud = position.coords.latitude;
-            const longitud = position.coords.longitude;
-            
-            const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
-
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-
-                    const poblacion = data.address.city || data.address.town || data.address.village || data.address.hamlet || data.address.locality || data.address.county || data.address.state || data.address.country;
-                    
-                    console.log("TIempo en:", poblacion);
-                })
-                .catch(error => {
-                    console.error('Error al obtener el nombre de la población:', error);
-                });
-        });
-    } else {
-        console.error('Geolocalización no es soportada en este navegador.');
-    }
+function obtenerTiempo(latitud, longitud) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&hourly=rain`;
+  console.log(url);
 }
 
-obtenerNombrePoblacion();
+function obtenerNombrePoblacion(latitud, longitud) {
+  const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const poblacion =
+        data.address.city ||
+        data.address.town ||
+        data.address.village ||
+        data.address.hamlet ||
+        data.address.locality ||
+        data.address.county ||
+        data.address.state ||
+        data.address.country;
+
+      console.log("Tiempo en:", poblacion);
+    })
+    .catch((error) => {
+      console.error("Error al obtener el nombre de la población:", error);
+    });
+}
+
+function horaActual() {
+  const hora = new Date().getHours();
+  return hora;
+}
+
+obtenerLatitudLongitud();
+
+console.log(horaActual());
