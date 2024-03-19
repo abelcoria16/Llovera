@@ -55,27 +55,35 @@ function comprobarSiLlovera(arrayLluvia8Horas) {
 }
 
 function obtenerNombrePoblacion(latitud, longitud) {
-    const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
+  const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
 
-    fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-            const poblacion =
-                data.address.city ||
-                data.address.town ||
-                data.address.village ||
-                data.address.hamlet ||
-                data.address.locality ||
-                data.address.county ||
-                data.address.state ||
-                data.address.country;
+  fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+          const poblacion =
+              data.address.city ||
+              data.address.town ||
+              data.address.village ||
+              data.address.hamlet ||
+              data.address.locality ||
+              data.address.county ||
+              data.address.state ||
+              data.address.country;
 
-            console.log("Estás en:", poblacion);
-        })
-        .catch((error) => {
-            console.error("Error al obtener el nombre de la población:", error);
-        });
+          mostrarPoblacion(poblacion); 
+      })
+      .catch((error) => {
+          console.error("Error al obtener el nombre de la población:", error);
+      });
 }
+
+function mostrarPoblacion(poblacion) {
+  const poblacionElement = document.getElementById('poblacion');
+  poblacionElement.textContent = `Estás en: ${poblacion}`;
+}
+
+
+
 
 function inicioBoton() {
     const btnLluviaHoras = document.getElementById("botonTiempo");
