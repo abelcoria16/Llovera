@@ -170,19 +170,20 @@ function mostrarTiempo(
 
 function seleccionarIconoTiempo(nubes, lluvia, amanecer, atardecer, hora) {
   let imagen = "";
-  //  nubes = 30;
-  console.log(nubes+": "+hora+": "+lluvia);
+    // nubes = 69;
+    // hora = 20;
+  console.log("Nubes: "+nubes+" Hora: "+hora+" Lluvia: "+lluvia+ " amanecer: "+amanecer+ " atardecer: "+atardecer);
   if (lluvia > 0) {
     imagen = "lluvia.png";
-  } else if (nubes > 70) {
+  } else if (nubes >= 70) {
     imagen = "nubes.png";
-  } else if (nubes > 20 && nubes<70) {
+  } else if (nubes >= 20 && nubes<70 && (hora < amanecer || hora >= atardecer)) {
+    imagen = "nocheNubes.png";
+  }else if (nubes >= 20 && nubes<70) {
     imagen = "solNubes.png";
   } else if (hora < amanecer || hora > atardecer) {
     imagen = "noche.png";
-  } else if (nubes > 20 && nubes<70 && hora < amanecer || hora > atardecer) {
-    imagen = "nocheNubes.png";
-  }else {
+  } else {
     imagen = "soleado.png";
   }
 
