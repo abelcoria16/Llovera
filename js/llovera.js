@@ -1,9 +1,12 @@
 "use strict";
 
+inicioBoton();
+
 function inicioBoton() {
   const btnLluviaHoras = document.getElementById("botonTiempo");
   btnLluviaHoras.addEventListener("click", (event) => {
     event.preventDefault();
+    console.clear();
     obtenerLatitudLongitud();
   });
 }
@@ -23,7 +26,8 @@ function obtenerLatitudLongitud() {
 }
 
 function obtenerTiempoMeteorologico(latitud, longitud) {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&hourly=temperature_2m,rain,cloud_cover&daily=sunrise,sunset&forecast_days=2`;
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&hourly=temperature_2m,rain,cloud_cover&daily=sunrise,sunset&timezone=Europe%2FBerlin&forecast_days=2`;
+  
 
   fetch(url)
     .then((response) => response.json())
@@ -152,14 +156,13 @@ function mostrarTiempo(
       hora.split(":")[0]
     );
 
-    
-    // const willRain = arrayLluvia[i] > 0 ? 'Sí' : 'No';
-    // <p>Lloverá: ${willRain}</p>
     const precipitation = arrayLluvia[i] + " mm";
+    const grados = arrayTemperaturas[i].toString().split(".")[0]+"°C";
 
     weatherCard.innerHTML = `
+            <h2>${hora}</h2>
             <img src="./img/${iconoTiempo}" alt="imagen tiempo" class="imgTiempo">
-            <p>${hora}h</p>
+            <h3>${grados}</h3>
             <p>Precipitación: ${precipitation}</p>
         `;
     weatherContainer.appendChild(weatherCard);
@@ -190,4 +193,4 @@ function seleccionarIconoTiempo(nubes, lluvia, amanecer, atardecer, hora) {
   return imagen;
 }
 
-inicioBoton();
+
