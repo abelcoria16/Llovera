@@ -1,5 +1,13 @@
 "use strict";
 
+function inicioBoton() {
+  const btnLluviaHoras = document.getElementById("botonTiempo");
+  btnLluviaHoras.addEventListener("click", (event) => {
+      event.preventDefault();
+      obtenerLatitudLongitud();
+  });
+}
+
 function obtenerLatitudLongitud() {
     let longitud;
     let latitud;
@@ -37,23 +45,6 @@ function obtenerTiempoMeteorologico(latitud, longitud) {
             console.error("Error al obtener el tiempo: ", error);
         });
 }
-
-function comprobarSiLlovera(arrayLluvia8Horas) {
-    let llovera = false;
-
-    arrayLluvia8Horas[3]=0.10;
-    arrayLluvia8Horas[7]=0.10;
-
-    for (const lluvia of arrayLluvia8Horas) {
-        if (lluvia > 0) {
-            llovera = true;
-            break;
-        }
-    }
-
-    console.log("Llovera? ", llovera);
-}
-
 function obtenerNombrePoblacion(latitud, longitud) {
   const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
 
@@ -77,21 +68,38 @@ function obtenerNombrePoblacion(latitud, longitud) {
       });
 }
 
+function comprobarSiLlovera(arrayLluvia8Horas) {
+    let llovera = false;
+
+    arrayLluvia8Horas[3]=0.10;
+    // arrayLluvia8Horas[7]=0.10;
+
+    for (const lluvia of arrayLluvia8Horas) {
+        if (lluvia > 0) {
+            llovera = true;
+            break;
+        }
+    }
+
+    mostrarSiLlovera(llovera);
+}
+
 function mostrarPoblacion(poblacion) {
   const poblacionElement = document.getElementById('poblacion');
   poblacionElement.textContent = `Estás en: ${poblacion}`;
 }
 
-
-
-
-function inicioBoton() {
-    const btnLluviaHoras = document.getElementById("botonTiempo");
-    btnLluviaHoras.addEventListener("click", (event) => {
-        event.preventDefault();
-        obtenerLatitudLongitud();
-    });
+function mostrarSiLlovera(llovera){
+  const parrafoLloveraSN = document.getElementById('lloveraSN');
+  let lluvia;
+  if (llovera===true) {
+    lluvia = "Sí"
+  }else{
+    lluvia = "No"
+  }
+  parrafoLloveraSN.innerHTML = `${lluvia} llovera`
 }
+
 
 function mostrarTiempo(arrayLluvia, arrayHoras) {
     const container = document.getElementById('cuadrosTiempo');
@@ -105,12 +113,12 @@ function mostrarTiempo(arrayLluvia, arrayHoras) {
         const weatherCard = document.createElement('div');
         weatherCard.classList.add('tiempoCuadro');
         const hora = arrayHoras[i].split("T")[1];
-        const willRain = arrayLluvia[i] > 0 ? 'Sí' : 'No';
+        // const willRain = arrayLluvia[i] > 0 ? 'Sí' : 'No';
+        // <p>Lloverá: ${willRain}</p>
         const precipitation = arrayLluvia[i] + ' mm';
 
         weatherCard.innerHTML = `
             <p>${hora}h</p>
-            <p>Lloverá: ${willRain}</p>
             <p>Precipitación: ${precipitation}</p>
         `;
         weatherContainer.appendChild(weatherCard);
