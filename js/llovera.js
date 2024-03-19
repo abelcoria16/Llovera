@@ -20,9 +20,10 @@ function obtenerTiempoMeteorologico(latitud, longitud) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      // const arrayHoras = data.hourly.time;
+      const arrayHoras = data.hourly.time;
       const arrayLuvia = data.hourly.rain;
       const arrayLlovera8Horas = [];
+      const array8Horas = [];
       const hora = horaActual();
       const hora8=hora+8;
 
@@ -30,9 +31,10 @@ function obtenerTiempoMeteorologico(latitud, longitud) {
       for (let i = hora; i < hora8; i++) {
         // console.log(arrayHoras[i]); 
         arrayLlovera8Horas.push(arrayLuvia[i]);
+        array8Horas.push(arrayHoras[i]);
       }
       comprobarSiLlovera(arrayLlovera8Horas);
-      mostrarTiempo(arrayLlovera8Horas,);
+      mostrarTiempo(arrayLlovera8Horas, array8Horas);
      
     })
     .catch((error) => {
@@ -86,25 +88,24 @@ function incioBoton() {
     btnLluviaHoras.addEventListener('click', event => {
         event.preventDefault();
         obtenerLatitudLongitud();
-        
-
-
-
     })
 
 
 }
 
-function mostrarTiempo(arrayLluvia,arrayHoras) {
+function mostrarTiempo(arrayLluvia, arrayHoras) {
+
   document.querySelector('section').style.display = "none";
 
   const seccionTiempo = document.getElementById('cuadrosTiempo');
 
-  for(const lluvia of arrayLluvia){
+  console.log(arrayHoras);
+
+  for(let i=0;i<arrayLluvia.length;i++){
+    const hora = arrayHoras[i].split("T")[1];
     const mensajeLlovera = document.createElement('p');
-     mensajeLlovera.textContent = "Lluvia: "+lluvia+" mm";
- 
-    seccionTiempo.appendChild(mensajeLlovera);
+     mensajeLlovera.textContent = hora+"h Lluvia: "+arrayLluvia[i]+" mm";
+     seccionTiempo.appendChild(mensajeLlovera);
   }
   
 }
