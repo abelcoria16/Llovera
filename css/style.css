@@ -1,59 +1,84 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
-}
-
-.container {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    margin-top: 20px;
-}
-
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-#cuadrosTiempo {
-    display: none;
-}
-
-.contenedorTiempo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.tiempoCuadro {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-}
-
-.tiempoCuadro p {
-    font-size: 18px;
-    margin: 5px 0;
-}
-
-.imgTiempo{
-    width: 80px;
-    height: 80px;
-}
+    box-sizing: border-box;
+    background-color: rgb(138, 212, 184);
+  }
+  
+  body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      padding: 50px;
+      justify-content: center;
+  
+  }
+  
+  .container {
+      width: 80%;
+      margin: auto;
+      text-align: center;
+      margin-top: 20px;
+  }
+  
+  button {
+      position: relative;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border:hsl();
+      cursor: pointer; 
+      border-radius: 5px;
+      box-shadow: 16px 14px 20px #2a0c0c8c;
+      /* box-shadow: 0 0 0 10px #4fc3dc44,
+      0 0 50px #4fc3dc,
+      0 0 100px #4fc3dc;
+      animation: animate 15s linear; */
+  }
+  
+  @keyframes animate{
+      0% {
+          transform: translateY(100vh) scale(0);
+      }
+      100% {
+          transform: translateY(-10vh) scale(1);
+      }
+  }
+  
+  button:hover {
+      background-color: #45a049;
+  }
+  
+  section {
+      margin-bottom: 20px;
+  }
+  
+  #cuadrosTiempo {
+      display: none;
+  }
+  
+  .contenedorTiempo {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+  
+  .tiempoCuadro {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 10px;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+  }
+  
+  .tiempoCuadro p {
+      font-size: 18px;
+      margin: 5px 0; 
+  }
+  
+  .imgTiempo{
+      width: 80px;
+      height: 80px;
+  }
+  

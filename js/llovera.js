@@ -6,6 +6,10 @@ function inicioBoton() {
   const btnLluviaHoras = document.getElementById("botonTiempo");
   btnLluviaHoras.addEventListener("click", (event) => {
     event.preventDefault();
+
+    const tituloYBoton = document.getElementById('containerInicio');
+        tituloYBoton.style.display = "none";
+
     console.clear();
     obtenerLatitudLongitud();
   });
@@ -21,6 +25,7 @@ function obtenerLatitudLongitud() {
       latitud = posicion.coords.latitude;
       obtenerTiempoMeteorologico(latitud, longitud);
       obtenerNombrePoblacion(latitud, longitud);
+      obtenerTiempoDiario(latitud, longitud)
     });
   }
 }
@@ -71,6 +76,81 @@ function obtenerTiempoMeteorologico(latitud, longitud) {
 function horaActual() {
   return new Date().getHours();
 }
+
+// Mostrar tiempo diario
+
+function obtenerTiempoDiario(latitud, longitud) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitud}&longitude=${longitud}&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,rain_sum,wind_speed_10m_max&timezone=Europe%2FBerlin`;
+
+  fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+          const temperaturasMax = data.daily.temperature_2m_max;
+          const arrayTempMax = [];
+          const temperaturasMin = data.daily.temperature_2m_min;
+          const arrayTempMin = [];
+          const amanecerDiaActual = data.daily.sunrise[0].split("T")[1];
+          const atardecerDiaActual = data.daily.sunset[0].split("T")[1];
+          const sumaLluviasDia= data.daily.rain_sum;
+          const arraySumaLluviasDia = [];
+          const amanecerAtardecer = comprobarAmanecerAtardecer(amanecerDiaActual, atardecerDiaActual);
+          const velocidadViento = data.daily.wind_speed_10m_max;
+          const arrayVelocidadViento = [];
+          
+          for (let i = 0; i < 7; i++ ){
+              arrayTempMax.push(temperaturasMax[i] + data.daily.temperature_2m_max);
+              arrayTempMin.push(temperaturasMin[i] + data.daily.temperature_2m_max);
+              arraySumaLluviasDia.push(sumaLluviasDia[i]);
+              arrayVelocidadViento.push(velocidadViento[i] + data.daily_units.wind_speed_10m_max)
+             
+          }
+         let temperaturaMaximaDiaActual = temperaturasMax[0] + "ºC";
+         let temperaturaMinimaDiaActual = temperaturasMin[0] + "ºC";
+         let sumaLLuviaDiaActual = sumaLluviasDia[0] + data.daily_units.rain_sum;
+         let velocidadVientoDiaActual = velocidadViento[0];
+          console.log(temperaturaMaximaDiaActual);
+          console.log(temperaturaMinimaDiaActual);
+          console.log(sumaLLuviaDiaActual);
+          console.log(amanecerAtardecer);
+          console.log(velocidadVientoDiaActual);
+          mostrarTiempoDiario(temperaturaMaximaDiaActual, temperaturaMinimaDiaActual, amanecerAtardecer, sumaLLuviaDiaActual, velocidadVientoDiaActual);
+      })
+
+      .catch((error) => {
+          console.error("Error al obtener el tiempo Diario", error);
+      });
+
+}
+
+function mostrarTiempoDiario(tempMax,tempMin, amanecerAtardecer, sumaLluvia, velocidadViento) {
+  const containerTiempoDiario = document.getElementById("tiempoDelDia");
+  const tiempoDiario = document.createElement("div");
+  tiempoDiario.innerHTML = `
+    <p>${amanecerAtardecer.estado + amanecerAtardecer.hora}</p>
+  `;
+
+  containerTiempoDiario.appendChild(tiempoDiario);
+  
+}
+
+function comprobarAmanecerAtardecer(horaAmanecer, horaAtardecer) {
+  const amanecer = horaAmanecer.split(":")[0];
+  const atardecer= horaAtardecer.split(":")[0];
+  let amanecerAtardecerDiaActual = {
+    estado: "",
+    hora: ""
+  };
+  if (horaActual()>=amanecer) {
+    amanecerAtardecerDiaActual.estado = "Atardecer";
+    amanecerAtardecerDiaActual.hora = horaAtardecer;
+  }
+  else{
+    amanecerAtardecerDiaActual.estado = "Amanecer";
+    amanecerAtardecerDiaActual.hora = horaAmanecer;
+  }
+  return amanecerAtardecerDiaActual;
+}
+
 
 function obtenerNombrePoblacion(latitud, longitud) {
   const url = `https://nominatim.openstreetmap.org/reverse?lat=${latitud}&lon=${longitud}&format=json`;
@@ -173,9 +253,6 @@ function mostrarTiempo(
 
 function seleccionarIconoTiempo(nubes, lluvia, amanecer, atardecer, hora) {
   let imagen = "";
-    // nubes = 69;
-    // hora = 20;
-  console.log("Nubes: "+nubes+" Hora: "+hora+" Lluvia: "+lluvia+ " amanecer: "+amanecer+ " atardecer: "+atardecer);
   if (lluvia > 0) {
     imagen = "lluvia.png";
   } else if (nubes >= 70) {
