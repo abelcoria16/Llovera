@@ -72,6 +72,8 @@
       text-align: center;
   }
   
+
+
   .tiempoCuadro p {
       font-size: 18px;
       margin: 5px 0; 
@@ -82,3 +84,10 @@
       height: 80px;
   }
   
+
+  /* Imagenes del Tiempo Diario */
+
+  .temp {
+    height: 25px;
+    width: 25px;
+  }

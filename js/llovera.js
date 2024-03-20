@@ -107,7 +107,7 @@ function obtenerTiempoDiario(latitud, longitud) {
          let temperaturaMaximaDiaActual = temperaturasMax[0] + "ºC";
          let temperaturaMinimaDiaActual = temperaturasMin[0] + "ºC";
          let sumaLLuviaDiaActual = sumaLluviasDia[0] + data.daily_units.rain_sum;
-         let velocidadVientoDiaActual = velocidadViento[0];
+         let velocidadVientoDiaActual = velocidadViento[0] + data.daily_units.wind_speed_10m_max;
           console.log(temperaturaMaximaDiaActual);
           console.log(temperaturaMinimaDiaActual);
           console.log(sumaLLuviaDiaActual);
@@ -126,7 +126,11 @@ function mostrarTiempoDiario(tempMax,tempMin, amanecerAtardecer, sumaLluvia, vel
   const containerTiempoDiario = document.getElementById("tiempoDelDia");
   const tiempoDiario = document.createElement("div");
   tiempoDiario.innerHTML = `
-    <p>${amanecerAtardecer.estado + amanecerAtardecer.hora}</p>
+    <p><img src="../img/temp_max.png" class="temp">  ${tempMax}</p>
+    <p><img src="../img/temp_min.png" class="temp">  ${tempMin}</p>
+    <p>${amanecerAtardecer.estado + " " + amanecerAtardecer.hora}</p>
+    <p>${sumaLluvia}</p>
+    <p> <img src="../img/vel_viento.png" class="temp">  Velocidad del viento: ${velocidadViento}</p>
   `;
 
   containerTiempoDiario.appendChild(tiempoDiario);
@@ -193,7 +197,7 @@ function comprobarSiLlovera(arrayLluvia8Horas) {
 
 function mostrarPoblacion(poblacion) {
   const poblacionElement = document.getElementById("poblacion");
-  poblacionElement.textContent = `Estás en: ${poblacion}`;
+  poblacionElement.textContent = `Clima en: ${poblacion}`;
 }
 
 function mostrarSiLlovera(llovera) {
