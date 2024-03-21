@@ -114,7 +114,7 @@ function obtenerTiempoDiario(latitud, longitud) {
       let velocidadVientoDiaActual =
         velocidadViento[0] + data.daily_units.wind_speed_10m_max;
       const nubes = comprobarNubes(data.hourly.cloud_cover);
-      const iconoTiempo = seleccionarIconoTiempo(nubes,arraySumaLluviasDia[0]);
+      const iconoTiempo = seleccionarIconoTiempo(nubes, arraySumaLluviasDia[0]);
 
       mostrarTiempoDiario(
         temperaturaMaximaDiaActual,
@@ -140,17 +140,32 @@ function mostrarTiempoDiario(
   iconoTiempo
 ) {
   const containerTiempoDiario = document.getElementById("tiempoDelDia");
+  containerTiempoDiario.style.display = "block";
   const tiempoDiario = document.createElement("div");
   tiempoDiario.innerHTML = `
+  
     <img src="./img/${iconoTiempo}" alt="imagen tiempo" id="imgTiempoDia">
+  <div id="infoTiempoDiario">
     <p><img src="../img/temp_max.png" class="temp">  ${tempMax}</p>
     <p><img src="../img/temp_min.png" class="temp">  ${tempMin}</p>
-    <p>${amanecerAtardecer.estado + " " + amanecerAtardecer.hora}</p>
-    <p>${sumaLluvia}</p>
-    <p> <img src="../img/vel_viento.png" class="temp">  Velocidad del viento: ${velocidadViento}</p>
-  `;
+    <p>${
+      iconoAmanecerAtardecer(amanecerAtardecer.estado) + 
+      " " + amanecerAtardecer.hora
+    }</p>
+    <p><img src="../img/icono_lluvia.png" class="temp">${sumaLluvia}</p>
+    <p> <img src="../img/vel_viento.png" class="temp">  Vel. Viento: ${velocidadViento}</p>
+  </div>
+    `;
 
   containerTiempoDiario.appendChild(tiempoDiario);
+}
+
+function iconoAmanecerAtardecer(estado) {
+  const parte1 = '<img src="../img/';
+  const parte2 = estado;
+  const parte3 = '.png" class="temp">';
+  console.log(parte1 + parte2 + parte3);
+  return `${parte1}${parte2}${parte3}`;
 }
 
 function comprobarAmanecerAtardecer(horaAmanecer, horaAtardecer) {
@@ -257,10 +272,10 @@ function mostrarTiempo(
     const grados = arrayTemperaturas[i].toString().split(".")[0] + "°C";
 
     weatherCard.innerHTML = `
-            <h2>${hora}</h2>
-            <img src="./img/${iconoTiempo}" alt="imagen tiempo" class="imgTiempo">
-            <h3>${grados}</h3>
-            <p>Precipitación: ${precipitation}</p>
+            <h2 class="fondoBlanco">${hora}</h2>
+            <img src="./img/${iconoTiempo}" alt="imagen tiempo" class="imgTiempo" class="fondoBlanco">
+            <h3 class="fondoBlanco">${grados}</h3>
+            <p class="fondoBlanco">Precipitación: ${precipitation}</p>
         `;
     weatherContainer.appendChild(weatherCard);
   }
