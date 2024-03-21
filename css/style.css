@@ -1,112 +1,252 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* -------- CSS GENERAL --------- */
+body {
+  font-family: Arial, sans-serif;
+  margin-top: 10px;
+  margin: 15px;
+  justify-content: center;
+  background-color: rgb(138, 212, 184);
+}
+
+.container{
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#poblacion{
+  font-size:20px ;
+}
+
+#lloveraSN{
+  font-size:18px ;
+
+}
+
+button {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: hsl();
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 16px 14px 20px #2a0c0c8c;
   
-  body {
-    font-family: Arial, sans-serif;
-    margin-top: 10px;
-    margin: 30px;
-    /* padding: 50px; */
-    justify-content: center;
-    background-color: rgb(138, 212, 184);
+}
+
+@keyframes animate {
+  0% {
+    transform: translateY(100vh) scale(0);
   }
+
+  100% {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+#cuadrosTiempo {
+  display: none;
+  width: 95%;
+}
+
+.contenedorTiempo {
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  background-color: #06675859;
+  border-radius: 25px;
+  margin-top: 15px;
+  width:100%
+}
+
+.tiempoCuadro {
+  background-color: #ffffffb0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  margin: 10px;
+  padding-top:5px;
+  text-align: center;
+  font-weight:550;
+}
+
+#tiempoDelDia {
+  background-color: #ffffffb0;
+  border-radius: 25px;
+  display: none;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  font-weight:550;
+  padding-top:10px ;
+}
+
+.fecha{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#infoTiempoDiario {
+  text-align: center;
+  /* padding-left: 70px; */
+}
+
+
+
+.imgTiempo {
+  width: 60px;
+  height: 60px;
+}
+
+
+
+/* Imagenes del Tiempo Diario */
+
+/* .temp {
+  height: 22px;
+  width: 22px;
+} */
+  /* -------- CSS MOVIL --------- */
+@media screen and (max-width: 600px) {
   
+.tiempoCuadro {
+  width: 150px;
+  height: 150px;
+  font-size: 14px;
+  font-weight:550;
+  
+}
+.tiempoCuadro p {
+  margin: 5px ;
+  width: 90%;
+  
+}
+
+#tiempoDelDia {
+  width: 245px;
+  height: 245px;
+  font-size: 16px;
+}
+
+#imgTiempoDia {
+  width: 70px;
+  height: 70px;
+}
+.temp {
+  height: 20px;
+  width: 20px;
+}
+}
+
+/* -------- CSS TABLET --------- */
+@media screen and  (min-width:601px) {
+.tiempoCuadro {
+  width: 180px;
+  height: 180px;
+  font-size: 16px;
+  font-weight:550;
+}
+.tiempoCuadro p {
+  margin: 5px ;
+  width: 90%;
+  
+}
+
+#tiempoDelDia {
+   width: 350px;
+  height: 350px;
+  font-size: 19px;
+}
+
+#imgTiempoDia {
+  width: 140px;
+  height: 140px;
+}
+
+.temp {
+  height: 24px;
+  width: 24px;
+}
+}
+
+
+/* -------- CSS ESCRITORIO --------- */
+@media screen and (min-width: 1025px) {
+
+  #poblacion{
+    font-size:25px ;
+  }
+
+  #lloveraSN {
+    font-size: 20px;
+  }
+
   .container {
     width: 80%;
     margin: auto;
     text-align: center;
     margin-top: 20px;
   }
-  
-  button {
-    position: relative;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4caf50;
-    color: white;
-    border: hsl();
-    cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 16px 14px 20px #2a0c0c8c;
-    /* box-shadow: 0 0 0 10px #4fc3dc44,
-        0 0 50px #4fc3dc,
-        0 0 100px #4fc3dc;
-        animation: animate 15s linear; */
-  }
-  
-  @keyframes animate {
-    0% {
-      transform: translateY(100vh) scale(0);
-    }
-  
-    100% {
-      transform: translateY(-10vh) scale(1);
-    }
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  section {
-    margin-bottom: 20px;
-  }
-  
-  #cuadrosTiempo {
-    display: none;
-  }
-  
-  .contenedorTiempo {
-    display: flex;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
-    justify-content: center;
-  }
-  
-  .tiempoCuadro {
-    background-color: #ffffffb0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-  }
-  
   #tiempoDelDia {
+    padding-top:20px ;
     background-color: #ffffffb0;
     width: 400px;
-    height: 300px;
+    height: 400px;
     border-radius: 25px;
     display: none;
+    font-size: 22px;
   }
-  
-  #infoTiempoDiario {
-    text-align: center;
-    /* padding-left: 70px; */
+  /* Imagenes de iconos de tiempo */
+  .temp {
+    height: 25px;
+    width: 25px;
   }
-  
-  .tiempoCuadro p {
-    font-size: 18px;
-    margin: 5px 0;
+
+  #imgTiempoDia {
+    width: 160px;
+    height: 160px;
   }
+
   
   .imgTiempo {
     width: 80px;
     height: 80px;
   }
-  
-  #imgTiempoDia {
-    width: 120px;
-    height: 120px;
+  .contenedorTiempo {
+    flex-direction: row;
   }
-  
-  /* Imagenes del Tiempo Diario */
-  
-  .temp {
-    height: 25px;
-    width: 25px;
+  .tiempoCuadro {
+    border-radius: 25px;
+    margin: 10px;
+    padding: 10px;
+    width: 150px;
+    height: 200px;
+    text-align: center;
+    font-size: 17px;
   }
-  
+
+
+  .fecha {
+    font-weight: bold;
+
+  }
+}
