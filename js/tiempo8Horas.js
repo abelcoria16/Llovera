@@ -82,9 +82,16 @@ function mostrarTiempo(
   const container = document.getElementById("cuadrosTiempo");
   container.style.display = "block";
   container.innerHTML = "";
-
   const weatherContainer = document.createElement("div");
-  weatherContainer.classList.add("contenedorTiempo");
+  weatherContainer.classList.add("contenedorCuadrados");
+
+  const parrafo8Horas = document.createElement('p');
+  parrafo8Horas.innerHTML=`Tiempo de las proximas 8 horas:`;
+  weatherContainer.appendChild(parrafo8Horas);
+
+  const contenedorCuadrados = document.createElement("div");
+  weatherContainer.appendChild(contenedorCuadrados);
+  contenedorCuadrados.classList.add("contenedorTiempo");
 
   for (let i = 0; i < arrayLluvia.length; i++) {
     const weatherCard = document.createElement("div");
@@ -99,6 +106,7 @@ function mostrarTiempo(
       atardecer,
       hora.split(":")[0]
     );
+ 
 
     const precipitation = arrayLluvia[i] + " mm";
     const grados = arrayTemperaturas[i].toString().split(".")[0] + "°C";
@@ -109,7 +117,7 @@ function mostrarTiempo(
             <h3 class="fondoBlanco">${grados}</h3>
             <p class="fondoBlanco">Precipitación: ${precipitation}</p>
         `;
-    weatherContainer.appendChild(weatherCard);
+    contenedorCuadrados.appendChild(weatherCard);
   }
 
   container.appendChild(weatherContainer);

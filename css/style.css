@@ -12,6 +12,19 @@ body {
   background-color: rgb(138, 212, 184);
 }
 
+button {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: hsl();
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 16px 14px 20px #2a0c0c8c;
+  
+}
+
 .container{
   margin: auto;
   text-align: center;
@@ -30,17 +43,27 @@ h1 {
 
 }
 
-button {
-  position: relative;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: white;
-  border: hsl();
-  cursor: pointer;
-  border-radius: 5px;
-  box-shadow: 16px 14px 20px #2a0c0c8c;
-  
+.contenedorCuadrados{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  justify-content: center;
+  background-color: #06675859;
+  border-radius: 25px;
+  margin-top: 15px;
+  width:100%
+}
+
+#sectionRecargarUbicacion{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#linkRecargar{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  margin-top: 10px;
+  margin-right: 40px;
 }
 
 @keyframes animate {
@@ -71,13 +94,6 @@ section {
   /* flex-direction: row; */
   flex-wrap: wrap;
   justify-content: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  justify-content: center;
-  background-color: #06675859;
-  border-radius: 25px;
-  margin-top: 15px;
-  width:100%
 }
 
 .tiempoCuadro {

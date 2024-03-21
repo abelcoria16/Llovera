@@ -18,14 +18,14 @@ function seleccionarIconoTiempo(nubes, lluvia, amanecer, atardecer, hora) {
   }
 
   if (hora < amanecer || hora > atardecer) {
-    ("noche.png");
+    return "noche.png";
   }
 
   return "soleado.png";
-} 
+}
 
 function horaActual() {
   return new Date().getHours();
-} 
+}
 
-export {seleccionarIconoTiempo, horaActual}
+export { seleccionarIconoTiempo, horaActual };

@@ -1,8 +1,7 @@
 "use strict";
 
-import { obtenerTiempo8Horas } from "./tiempo8Horas.js";
-import { obtenerTiempoDiario } from "./tiempoDiario.js";
-import { obtenerNombrePoblacion } from "./poblacion.js";
+import { recogerDatosLocalStorage } from "./latitudYLongitud.js";
+
 
 inicioBoton();
 
@@ -14,22 +13,7 @@ function inicioBoton() {
     const tituloYBoton = document.getElementById("containerInicio");
     tituloYBoton.style.display = "none";
 
-    console.clear();
-    obtenerLatitudLongitud();
+    recogerDatosLocalStorage();
+    
   });
-}
-
-function obtenerLatitudLongitud() {
-  let longitud;
-  let latitud;
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((posicion) => {
-      longitud = posicion.coords.longitude;
-      latitud = posicion.coords.latitude;
-      obtenerTiempo8Horas(latitud, longitud);
-      obtenerNombrePoblacion(latitud, longitud);
-      obtenerTiempoDiario(latitud, longitud);
-    });
-  }
 }
