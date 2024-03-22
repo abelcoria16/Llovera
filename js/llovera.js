@@ -1,9 +1,29 @@
 "use strict";
 
-import { recogerDatosLocalStorage } from "./latitudYLongitud.js";
+import { obtenerTiempo8Horas } from "./tiempo8Horas.js";
+import { obtenerTiempoDiario } from "./tiempoDiario.js";
+import { obtenerNombrePoblacion } from "./poblacion.js";
+import { generarLinkRecargar } from "./recargarUbicacion.js";
+import { obtenerLatitudLongitud } from "./latitudYLongitud.js";
 
+recogerDatosLocalStorage();
 
-inicioBoton();
+function recogerDatosLocalStorage() {
+  const latitud = localStorage.getItem("latitud");
+  const longitud = localStorage.getItem("longitud");
+
+  if (latitud != null && longitud != null) {
+    const tituloYBoton = document.getElementById("containerInicio");
+    tituloYBoton.style.display = "none";
+    obtenerTiempo8Horas(latitud, longitud);
+    obtenerNombrePoblacion(latitud, longitud);
+    obtenerTiempoDiario(latitud, longitud);
+    generarLinkRecargar();
+  } else {
+    inicioBoton();
+  }
+}
+
 
 function inicioBoton() {
   const btnLluviaHoras = document.getElementById("botonTiempo");
@@ -13,7 +33,9 @@ function inicioBoton() {
     const tituloYBoton = document.getElementById("containerInicio");
     tituloYBoton.style.display = "none";
 
-    recogerDatosLocalStorage();
+    obtenerLatitudLongitud();
     
   });
 }
+
+export {recogerDatosLocalStorage};

@@ -1,9 +1,6 @@
 "use strict";
 
-import { obtenerTiempo8Horas } from "./tiempo8Horas.js";
-import { obtenerTiempoDiario } from "./tiempoDiario.js";
-import { obtenerNombrePoblacion } from "./poblacion.js";
-import { generarLinkRecargar } from "./recargarUbicacion.js";
+import {recogerDatosLocalStorage} from "./llovera.js"
 
 function obtenerLatitudLongitud() {
   let longitud;
@@ -20,18 +17,7 @@ function obtenerLatitudLongitud() {
   }
 }
 
-function recogerDatosLocalStorage() {
-  const latitud = localStorage.getItem("latitud");
-  const longitud = localStorage.getItem("longitud");
+export {obtenerLatitudLongitud};
 
-  if (latitud != null && longitud != null) {
-    obtenerTiempo8Horas(latitud, longitud);
-    obtenerNombrePoblacion(latitud, longitud);
-    obtenerTiempoDiario(latitud, longitud);
-    generarLinkRecargar();
-  } else {
-    obtenerLatitudLongitud();
-  }
-}
 
-export{recogerDatosLocalStorage};
+

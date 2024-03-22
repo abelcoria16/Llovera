@@ -1,7 +1,5 @@
 "use strict";
 
-import { recogerDatosLocalStorage } from "./latitudYLongitud.js";
-
 function generarLinkRecargar() {
   const seccion = document.getElementById("sectionRecargarUbicacion");
   seccion.innerHTML = `
