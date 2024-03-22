@@ -22,10 +22,8 @@ button {
   cursor: pointer;
   border-radius: 5px;
   box-shadow: 16px 14px 20px #2a0c0c8c;
-  
 }
-
-.container{
+.container {
   margin: auto;
   text-align: center;
 }
@@ -34,31 +32,30 @@ h1 {
   margin-bottom: 20px;
 }
 
-#poblacion{
-  font-size:20px ;
+#poblacion {
+  font-size: 20px;
 }
 
-#lloveraSN{
-  font-size:18px ;
-
+#lloveraSN {
+  font-size: 18px;
 }
 
-.contenedorCuadrados{
+.contenedorCuadrados {
   padding-top: 10px;
   padding-bottom: 10px;
   justify-content: center;
   background-color: #06675859;
   border-radius: 25px;
   margin-top: 15px;
-  width:100%
+  width: 100%;
 }
 
-#sectionRecargarUbicacion{
+#sectionRecargarUbicacion {
   display: flex;
   justify-content: flex-end;
 }
 
-#linkRecargar{
+#linkRecargar {
   text-decoration: none;
   font-weight: bold;
   color: black;
@@ -86,7 +83,6 @@ section {
 
 #cuadrosTiempo {
   display: none;
-  width: 95%;
 }
 
 .contenedorTiempo {
@@ -101,9 +97,9 @@ section {
   border: 1px solid #ccc;
   border-radius: 25px;
   margin: 10px;
-  padding-top:5px;
+  padding-top: 5px;
   text-align: center;
-  font-weight:550;
+  font-weight: 550;
 }
 
 #tiempoDelDia {
@@ -112,11 +108,11 @@ section {
   display: none;
   margin-top: 10px;
   padding-bottom: 10px;
-  font-weight:550;
-  padding-top:10px ;
+  font-weight: 550;
+  padding-top: 10px;
 }
 
-.fecha{
+.fecha {
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -126,14 +122,10 @@ section {
   /* padding-left: 70px; */
 }
 
-
-
 .imgTiempo {
   width: 60px;
   height: 60px;
 }
-
-
 
 /* Imagenes del Tiempo Diario */
 
@@ -141,75 +133,69 @@ section {
   height: 22px;
   width: 22px;
 } */
-  /* -------- CSS MOVIL --------- */
+/* -------- CSS MOVIL --------- */
 @media screen and (max-width: 600px) {
-  
-.tiempoCuadro {
-  width: 150px;
-  height: 150px;
-  font-size: 14px;
-  font-weight:550;
-  
-}
-.tiempoCuadro p {
-  margin: 5px ;
-  width: 90%;
-  
-}
+  .tiempoCuadro {
+    width: 150px;
+    height: 150px;
+    font-size: 14px;
+    font-weight: 550;
+  }
+  .tiempoCuadro p {
+    margin: 5px;
+    width: 90%;
+  }
 
-#tiempoDelDia {
-  width: 245px;
-  height: 245px;
-  font-size: 16px;
-}
+  #tiempoDelDia {
+    width: 245px;
+    height: 245px;
+    font-size: 16px;
+  }
 
-#imgTiempoDia {
-  width: 70px;
-  height: 70px;
-}
-.temp {
-  height: 20px;
-  width: 20px;
-}
+  #imgTiempoDia {
+    width: 70px;
+    height: 70px;
+  }
+  .temp {
+    height: 20px;
+    width: 20px;
+  }
 }
 
 /* -------- CSS TABLET --------- */
-@media screen and  (min-width:601px) {
-.tiempoCuadro {
-  width: 180px;
-  height: 180px;
-  font-size: 16px;
-  font-weight:550;
-}
-.tiempoCuadro p {
-  margin: 5px ;
-  width: 90%;
-  
-}
+@media screen and (min-width: 601px) {
+  .tiempoCuadro {
+    width: 180px;
+    height: 180px;
+    font-size: 16px;
+    font-weight: 550;
+  }
+  .tiempoCuadro p {
+    margin: 5px;
+    width: 90%;
+  }
 
-#tiempoDelDia {
-   width: 350px;
-  height: 350px;
-  font-size: 19px;
-}
+  #tiempoDelDia {
+    width: 350px;
+    height: 350px;
+    font-size: 19px;
+  }
 
-#imgTiempoDia {
-  width: 140px;
-  height: 140px;
-}
+  #imgTiempoDia {
+    width: 140px;
+    height: 140px;
+  }
 
-.temp {
-  height: 24px;
-  width: 24px;
+  .temp {
+    height: 24px;
+    width: 24px;
+  }
 }
-}
-
 
 /* -------- CSS ESCRITORIO --------- */
 @media screen and (min-width: 1025px) {
-
-  #poblacion{
-    font-size:25px ;
+  #poblacion {
+    font-size: 25px;
   }
 
   #lloveraSN {
@@ -223,7 +209,7 @@ section {
     margin-top: 20px;
   }
   #tiempoDelDia {
-    padding-top:20px ;
+    padding-top: 20px;
     background-color: #ffffffb0;
     width: 400px;
     height: 400px;
@@ -242,7 +228,6 @@ section {
     height: 160px;
   }
 
-  
   .imgTiempo {
     width: 80px;
     height: 80px;
@@ -260,9 +245,7 @@ section {
     font-size: 17px;
   }
 
-
   .fecha {
     font-weight: bold;
-
   }
 }
