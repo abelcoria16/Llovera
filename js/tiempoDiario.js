@@ -69,15 +69,15 @@ function mostrarTiempoDiario(
   <p>${fecha}</p>
     <img src="./img/${iconoTiempo}" alt="imagen tiempo" id="imgTiempoDia">
   <div id="infoTiempoDiario">
-    <p><img src="../img/temp_max.png" class="temp">  ${tempMax}</p>
-    <p><img src="../img/temp_min.png" class="temp">  ${tempMin}</p>
+    <p><img src="./img/temp_max.png" class="temp">  ${tempMax}</p>
+    <p><img src="./img/temp_min.png" class="temp">  ${tempMin}</p>
     <p>${
       iconoAmanecerAtardecer(amanecerAtardecer.estado) +
       " " +
       amanecerAtardecer.hora
     }</p>
-    <p><img src="../img/icono_lluvia.png" class="temp">${sumaLluvia}</p>
-    <p> <img src="../img/vel_viento.png" class="temp">  Vel. Viento: ${velocidadViento}</p>
+    <p><img src="./img/icono_lluvia.png" class="temp">${sumaLluvia}</p>
+    <p> <img src="./img/vel_viento.png" class="temp">  Vel. Viento: ${velocidadViento}</p>
   </div>
     `;
 
