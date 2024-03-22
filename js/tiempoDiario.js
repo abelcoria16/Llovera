@@ -85,7 +85,7 @@ function mostrarTiempoDiario(
 }
 
 function iconoAmanecerAtardecer(estado) {
-  const parte1 = '<img src="../img/';
+  const parte1 = '<img src="./img/';
   const parte2 = estado;
   const parte3 = '.png" class="temp">';
   return `${parte1}${parte2}${parte3}`;
