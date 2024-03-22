@@ -99,10 +99,10 @@ function comprobarAmanecerAtardecer(horaAmanecer, horaAtardecer) {
     hora: "",
   };
   if (horaActual() >= amanecer) {
-    amanecerAtardecerDiaActual.estado = "Atardecer";
+    amanecerAtardecerDiaActual.estado = "atardecer";
     amanecerAtardecerDiaActual.hora = horaAtardecer;
   } else {
-    amanecerAtardecerDiaActual.estado = "Amanecer";
+    amanecerAtardecerDiaActual.estado = "amanecer";
     amanecerAtardecerDiaActual.hora = horaAmanecer;
   }
   return amanecerAtardecerDiaActual;
